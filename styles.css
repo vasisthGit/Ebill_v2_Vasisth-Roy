@@ -1,0 +1,98 @@
+
+.navbar {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #333;
+    background-image: linear-gradient(to bottom, #443bc4, #50bd6f);
+    background-color: #3498db; 
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    outline: none;
+  }
+  
+  .navbar-toggler-icon {
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  .nav-link {
+    color: #fff;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    color: #ccc;
+  }
+  
+  .nav-item.active {
+    background-color: #333;
+    border-radius: 5px;
+  }
+  
+  .nav-item.active.nav-link {
+    color: #fff;
+  }
+  
+  /* Add some spacing between nav items */
+  .nav-item {
+    margin-right: 20px;
+  }
+  
+  /* Make the navbar more responsive */
+  @media (max-width: 768px) {
+   .navbar-nav {
+      flex-direction: column;
+    }
+   .nav-item {
+      margin-right: 0;
+    }
+  }
+  
+  /* Add a subtle shadow to the navbar */
+  .navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .navbar-brand img {
+    max-height: 40px; /* Adjust the height of the logo as needed */
+    margin-right: 10px; /* Space between the logo and the text */
+}
+
+  body.custom-background {
+    margin: 0;
+    padding: 0;
+    height: auto; /* Allow body to have height based on its content */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    overflow: visible; /* Ensure body can scroll */
+    position: relative; /* Keep relative position for the background pseudo-element */
+}
+
+body.custom-background::before {
+    content: "";
+    position: fixed; /* Fix the position to viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('image.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -1; /* Ensure the background is behind all content */
+}
+.body-loginbg {
+  background: url('../E-Bill_Vasisth_Roy/image.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+.body-bg-image {
+  background-image: url('/form-bg.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+  

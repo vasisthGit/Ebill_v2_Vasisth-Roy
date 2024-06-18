@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electricity Bill Payment History</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="bg-light body-bg-image">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/logo.jpg" alt="Logo">
+                E-Bill Payment Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PaymentForm.html">Bill Payment</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="BillHistory.html">Bill History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ConnectionForm.html">New Connection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="header text-center mb-4">
+            <h1>Electricity Bill Payment History</h1>
+        </div>
+        <div class="filter-section mb-4">
+            <h2>Filter Payment History</h2>
+            <form action="" method="get" class="form-inline justify-content-center">
+                <div class="form-group mb-2">
+                    <label for="start-date" class="mr-2">Start Date:</label>
+                    <input type="date" class="form-control" id="start-date" name="start-date" required>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="end-date" class="mr-2">End Date:</label>
+                    <input type="date" class="form-control" id="end-date" name="end-date" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Filter</button>
+            </form>
+        </div>
+        
+        <div class="payment-history">
+            <h2>Payment History</h2>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Transaction ID</th>
+                        <th>Payment Method</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-06-05</td>
+                        <td>₹ 1500</td>
+                        <td>Paid</td>
+                        <td>61003</td>
+                        <td>Online Banking</td>
+                    </tr>
+                    <tr>
+                        <td>2024-05-04</td>
+                        <td>₹ 1200</td>
+                        <td>Paid</td>
+                        <td>61004</td>
+                        <td>UPI</td>
+                    </tr>
+                    <tr>
+                        <td>2024-04-03</td>
+                        <td>₹ 1800</td>
+                        <td>Paid</td>
+                        <td>61022</td>
+                        <td>Debit Card</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

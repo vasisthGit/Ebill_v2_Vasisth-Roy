@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Bill Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="bg-light body-bg-image">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/logo.jpg" alt="Logo">
+                E-Bill Payment Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PaymentForm.html">Bill Payment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="BillHistory.html">Bill History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ConnectionForm.html">New Connection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout-btn">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h1>Welcome to the E-Bill Payment Portal</h1>
+            <p class="lead">Your one-stop Electricity Bill Payment Site!</p>
+        </div>
+
+        <div class="mb-5">
+            <h2>How to Pay Your Bill</h2>
+            <p>Follow these simple steps to pay your electricity bill:</p>
+            <ol class="list-group list-group-flush">
+                <li class="list-group-item">Enter your account number.</li>
+                <li class="list-group-item">Verify your billing details.</li>
+                <li class="list-group-item">Enter the amount you wish to pay.</li>
+                <li class="list-group-item">Choose your preferred payment method and complete the payment.</li>
+            </ol>
+        </div>
+
+        <div class="mb-5">
+            <h2>Contact Us</h2>
+            <p>For any questions and queries, you can contact us at 
+                <a href="mailto:vasisthroy@gmail.com">vasisthroy@gmail.com</a> or call us at +91 9898989888.
+            </p>
+        </div>
+
+        <footer class="text-center">
+            <p>&copy; 2024 Electricity Bill Payment Portal</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+                window.location.href = 'Login.html';
+            }
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('loggedInUser');
+                window.location.href = 'Login.html';
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

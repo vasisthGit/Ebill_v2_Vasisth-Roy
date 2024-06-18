@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electricity Bill Feedback/Complaint</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="bg-light body-bg-image">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/logo.jpg" alt="Logo">
+                E-Bill Payment Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PaymentForm.html">Bill Payment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="BillHistory.html">Bill History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ConnectionForm.html">New Connection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout-btn">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">Electricity Bill Feedback/Complaint</h1>
+                        <form id="feedbackForm" novalidate>
+                            <fieldset>
+                                <legend>Personal Details</legend>
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div class="invalid-feedback">Please enter your name.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number:</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required pattern="[0-9]{10}">
+                                    <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Feedback/Complaint Details</legend>
+                                <div class="form-group">
+                                    <label for="bill_number">Bill Number:</label>
+                                    <input type="text" class="form-control" id="bill_number" name="bill_number" required>
+                                    <div class="invalid-feedback">Please enter your bill number.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback_type">Feedback/Complaint Type:</label>
+                                    <select class="form-control" id="feedback_type" name="feedback_type" required>
+                                        <option value="">Select</option>
+                                        <option value="Billing Issue">Billing Issue</option>
+                                        <option value="Payment Issue">Payment Issue</option>
+                                        <option value="Service Issue">Service Issue</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a feedback/complaint type.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                                    <div class="invalid-feedback">Please enter a description.</div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group text-center">
+                                <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                            </div>
+                        </form>
+                        <div id="confirmation" class="mt-4" style="display: none;">
+                            <h3 class="text-center">Form Submitted Successfully!</h3>
+                            <p id="confirmation-message"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (!loggedInUser) {
+                window.location.href = 'Login.html';
+                return;
+            }
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('loggedInUser');
+                window.location.href = 'Login.html';
+            });
+
+            document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Check if the form is valid
+                if (this.checkValidity() === false) {
+                    event.stopPropagation();
+                } else {
+                    // Retrieve form data
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        bill_number: document.getElementById('bill_number').value,
+                        feedback_type: document.getElementById('feedback_type').value,
+                        description: document.getElementById('description').value
+                    };
+
+                    // Store form data in local storage
+                    localStorage.setItem('feedbackData', JSON.stringify(formData));
+
+                    // Display confirmation message with form data
+                    document.getElementById('confirmation-message').innerHTML = `
+                        <strong>Name:</strong> ${formData.name}<br>
+                        <strong>Email:</strong> ${formData.email}<br>
+                        <strong>Phone:</strong> ${formData.phone}<br>
+                        <strong>Bill Number:</strong> ${formData.bill_number}<br>
+                        <strong>Feedback/Complaint Type:</strong> ${formData.feedback_type}<br>
+                        <strong>Description:</strong> ${formData.description}
+                    `;
+                    document.getElementById('confirmation').style.display = 'block';
+
+                    // Reset the form
+                    this.reset();
+                    this.classList.remove('was-validated'); // Remove Bootstrap validation styles
+                }
+                this.classList.add('was-validated'); // Add Bootstrap validation styles
+            }, false);
+        });
+    </script>
+</body>
+</html>
